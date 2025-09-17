@@ -55,4 +55,5 @@ public class Member extends BaseEntity {
     @Column(name = "marketing_consent")
     private Boolean marketingConsent;
 
+    
 }
