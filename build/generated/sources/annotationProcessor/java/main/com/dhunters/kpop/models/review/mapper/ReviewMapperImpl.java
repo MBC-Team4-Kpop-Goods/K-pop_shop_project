@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-09-22T13:35:59+0900",
+    date = "2025-09-22T15:30:21+0900",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.14.3.jar, environment: Java 17.0.15 (Microsoft)"
 )
 @Component
@@ -25,6 +25,8 @@ public class ReviewMapperImpl implements ReviewMapper {
 
         reviewRes.setReviewId( review.getReviewId() );
         reviewRes.setMemberId( review.getMemberId() );
+        reviewRes.setCreatedAt( review.getCreatedAt() );
+        reviewRes.setUpdatedAt( review.getModifiedAt() );
         reviewRes.setProductItemId( review.getProductItemId() );
         reviewRes.setOrderItemId( review.getOrderItemId() );
         reviewRes.setRating( review.getRating() );
@@ -33,7 +35,6 @@ public class ReviewMapperImpl implements ReviewMapper {
         reviewRes.setImagePaths( review.getImagePaths() );
         reviewRes.setLikeCount( review.getLikeCount() );
         reviewRes.setStatus( review.getStatus() );
-        reviewRes.setCreatedAt( review.getCreatedAt() );
 
         return reviewRes;
     }

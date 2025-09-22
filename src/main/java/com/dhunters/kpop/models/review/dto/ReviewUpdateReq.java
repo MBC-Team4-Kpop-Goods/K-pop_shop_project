@@ -16,6 +16,5 @@ public class ReviewUpdateReq {
     private String imagePaths;
     private Integer likeCount;
     private ReviewStatus status;
-    private LocalDateTime updatedAt;
 
 }

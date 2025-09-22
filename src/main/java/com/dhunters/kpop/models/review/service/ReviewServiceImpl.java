@@ -18,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(readOnly = true)
 public class ReviewServiceImpl implements ReviewService {
 
      private final ReviewMapper reviewMapper;
@@ -26,13 +25,13 @@ public class ReviewServiceImpl implements ReviewService {
 
      @Override
      @Transactional
-     public ReviewRes createReview(ReviewCreateReq req) {
+     public ReviewRes createReview(Long memberId, ReviewCreateReq req) {
          Review entity = reviewMapper.toEntity(req);
-
+         entity.setMemberId(memberId);
          if(entity.getLikeCount() == null) entity.setLikeCount(0);
          if(entity.getStatus() == null )entity.setStatus(ReviewStatus.ACTIVE);
-         Review saved = reviewRepository.save(entity);
-         return reviewMapper.toDto(saved);
+         return reviewMapper.toDto(reviewRepository.save(entity));
+
      }
 
     @Override
@@ -44,17 +43,35 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<Review> listReviews(Pageable pageable) {
         return null;
     }
 
     @Override
+    @Transactional
     public ReviewRes updateReview(Long reviewId, ReviewUpdateReq request) {
-        return null;
+         Review review = reviewRepository.findById(reviewId)
+                 .orElseThrow(() -> new NotFound("review not found: " + reviewId));
+
+         reviewMapper.updateEntity(review, request);
+
+        // 필요시 값 보정 (예: likeCount 음수 방지 등)
+        if (review.getLikeCount() != null && review.getLikeCount() < 0) {
+            review.setLikeCount(0);
+        }
+
+        Review saved = reviewRepository.save(review);
+        return reviewMapper.toDto(saved);
     }
 
     @Override
+    @Transactional
     public void deleteReview(Long reviewId) {
+    Review review = reviewRepository.findById(reviewId)
+            .orElseThrow(() -> new NotFound("review not found: " + reviewId));
+    review.setStatus(ReviewStatus.DELETED);
+    reviewRepository.save(review);
 
     }
 

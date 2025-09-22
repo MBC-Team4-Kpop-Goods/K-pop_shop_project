@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         // 구체 경로를 먼저
-                        .requestMatchers(HttpMethod.POST, "/api/reviews").permitAll() // 예: 임시 개방
+                        .requestMatchers(HttpMethod.POST, "/api/reviews/**").permitAll() // 예: 임시 개방
                         .requestMatchers("/health").permitAll()
                         // 그 다음 맨 마지막에 딱 한 번
                         .anyRequest().authenticated()
