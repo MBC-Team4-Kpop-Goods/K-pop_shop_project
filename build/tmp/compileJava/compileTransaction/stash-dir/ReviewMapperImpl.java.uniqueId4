@@ -1,0 +1,89 @@
+package com.dhunters.kpop.models.review.mapper;
+
+import com.dhunters.kpop.common.entity.review.Review;
+import com.dhunters.kpop.models.review.dto.ReviewCreateReq;
+import com.dhunters.kpop.models.review.dto.ReviewRes;
+import com.dhunters.kpop.models.review.dto.ReviewUpdateReq;
+import java.time.LocalDateTime;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2025-09-22T13:35:15+0900",
+    comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.14.3.jar, environment: Java 17.0.15 (Microsoft)"
+)
+@Component
+public class ReviewMapperImpl implements ReviewMapper {
+
+    @Override
+    public ReviewRes toDto(Review review) {
+        if ( review == null ) {
+            return null;
+        }
+
+        ReviewRes reviewRes = new ReviewRes();
+
+        reviewRes.setReviewId( review.getReviewId() );
+        reviewRes.setMemberId( review.getMemberId() );
+        reviewRes.setProductItemId( review.getProductItemId() );
+        reviewRes.setOrderItemId( review.getOrderItemId() );
+        reviewRes.setRating( review.getRating() );
+        reviewRes.setTitle( review.getTitle() );
+        reviewRes.setContent( review.getContent() );
+        reviewRes.setImagePaths( review.getImagePaths() );
+        reviewRes.setLikeCount( review.getLikeCount() );
+        reviewRes.setStatus( review.getStatus() );
+        if ( review.getCreatedAt() != null ) {
+            reviewRes.setCreatedAt( LocalDateTime.parse( review.getCreatedAt() ) );
+        }
+
+        return reviewRes;
+    }
+
+    @Override
+    public Review toEntity(ReviewCreateReq request) {
+        if ( request == null ) {
+            return null;
+        }
+
+        Review review = new Review();
+
+        review.setProductItemId( request.getProductItemId() );
+        review.setOrderItemId( request.getOrderItemId() );
+        review.setRating( request.getRating() );
+        review.setTitle( request.getTitle() );
+        review.setContent( request.getContent() );
+        review.setImagePaths( request.getImagePaths() );
+        review.setLikeCount( request.getLikeCount() );
+        review.setStatus( request.getStatus() );
+
+        return review;
+    }
+
+    @Override
+    public void updateEntity(Review review, ReviewUpdateReq request) {
+        if ( request == null ) {
+            return;
+        }
+
+        if ( request.getRating() != null ) {
+            review.setRating( request.getRating() );
+        }
+        if ( request.getTitle() != null ) {
+            review.setTitle( request.getTitle() );
+        }
+        if ( request.getContent() != null ) {
+            review.setContent( request.getContent() );
+        }
+        if ( request.getImagePaths() != null ) {
+            review.setImagePaths( request.getImagePaths() );
+        }
+        if ( request.getLikeCount() != null ) {
+            review.setLikeCount( request.getLikeCount() );
+        }
+        if ( request.getStatus() != null ) {
+            review.setStatus( request.getStatus() );
+        }
+    }
+}
