@@ -1,4 +1,7 @@
 package com.dhunters.kpop.models.coupon.repository;
 
-public interface CouponRepository {
+import com.dhunters.kpop.common.entity.Coupon;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CouponRepository extends JpaRepository<Coupon, Long> {
 }
