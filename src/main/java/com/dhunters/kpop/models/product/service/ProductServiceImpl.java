@@ -1,5 +1,8 @@
 package com.dhunters.kpop.models.product.service;
 
+import com.dhunters.kpop.models.member.repository.MemberRepository;
+import com.dhunters.kpop.models.product.dto.registProduct.RegistProductReq;
+import com.dhunters.kpop.models.product.dto.registProduct.RegistProductRes;
 import com.dhunters.kpop.models.product.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,8 +13,9 @@ public class ProductServiceImpl implements ProductService {
 
 	private final ProductRepository productRepository;
 
-	public void registProduct() {
+	@Override
+	public RegistProductRes registProduct(RegistProductReq request) {
 
+		return null;
 	}
-
 }
