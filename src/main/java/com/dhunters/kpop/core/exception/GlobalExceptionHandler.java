@@ -67,4 +67,13 @@ public class GlobalExceptionHandler {
         return new ApiError(HttpStatus.BAD_REQUEST.value(), "업로드 파일 크기가 너무 큽니다.");
     }
 
+    // 404 전용
+    @ExceptionHandler(NotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleNotFound(NotFound e) {
+        return new ApiError(HttpStatus.NOT_FOUND.value(), e.getMessage());
+    }
+
+
+
 }
