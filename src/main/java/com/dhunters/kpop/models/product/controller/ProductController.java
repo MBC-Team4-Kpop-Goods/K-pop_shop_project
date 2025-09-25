@@ -2,6 +2,7 @@ package com.dhunters.kpop.models.product.controller;
 
 import com.dhunters.kpop.core.api.v2.ApiResponse;
 import com.dhunters.kpop.models.cart.dto.addProduct.AddCartProductReq;
+import com.dhunters.kpop.models.product.dto.registProduct.RegistProductReq;
 import com.dhunters.kpop.models.product.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,24 +19,13 @@ public class ProductController {
 	private final ProductService productService;
 
 	/**
-	 * 1. 상품 등록하기
-	 *
-	 * @param reqeust
-	 */
-	@PostMapping()
-	public void addProduct(@RequestBody AddCartProductReq reqeust) {
-		var res = productService.registProduct(reqeust);
-		return ApiResponse.created(res);
-	}
-
-	/**
 	 * 1. 장바구니에 상품 추가하기
 	 *
 	 * @param reqeust
 	 */
 	@PostMapping("/products")
-	public ResponseEntity<?> registProduct(@RequestBody AddCartProductReq reqeust) {
-		var res = cartService.addProduct(reqeust);
+	public ResponseEntity<?> registProduct(@RequestBody RegistProductReq reqeust) {
+		var res = productService.registProduct(reqeust);
 		return ApiResponse.created(res);
 	}
 
