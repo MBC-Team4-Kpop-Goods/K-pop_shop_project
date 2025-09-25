@@ -4,13 +4,17 @@ package com.dhunters.kpop.core.exception;
 import com.dhunters.kpop.core.api.ApiError;
 import com.dhunters.kpop.core.api.v2.ApiResponse;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
+@Log4j2
 public class GlobalExceptionHandler {
 
     /**

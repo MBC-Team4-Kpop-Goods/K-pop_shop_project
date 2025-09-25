@@ -34,6 +34,8 @@ public final class ApiResponse {
 	 * 돌려줄 조회값이 없는 경우
 	 * noContent 호출한다.
 	 *
+	 * ex : Delete Row
+	 *
 	 * @return
 	 */
 	public static ResponseEntity<ApiWrapper<?>> noContent() {
@@ -41,9 +43,7 @@ public final class ApiResponse {
 	}
 
 	/**
-	 * api request 성공 했을 때
-	 * 돌려줄 조회값이 없는 경우
-	 * noContent 호출한다.
+	 * api request 실패 케이스
 	 *
 	 * @return
 	 */
