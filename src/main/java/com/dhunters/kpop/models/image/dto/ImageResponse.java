@@ -45,10 +45,10 @@ public class ImageResponse {
     
     
     // 이미지 메타 데이터
-    private EntityType entityType;
-    private Long entityId;
-    private RelationType relationType;
-    private Integer sortOrder;
-    private Boolean isActive;
+    private EntityType entityType;        // 어떤 도메인인지 (product, member ...)
+    private Long entityId;               // 어떤 엔티티에 속하는지 '1' (상품 ID 1)
+    private RelationType relationType;  // 어떤 용도로 사용하는지 (프로필, 배너, ...)
+    private Integer sortOrder;          // 여러 이미지 정렬 순서 정의
+    private Boolean isActive;           // 활성 상태 정의
 
 }

@@ -3,13 +3,13 @@ package com.dhunters.kpop.common.entity;
 
 import com.dhunters.kpop.common.enums.Grade;
 import com.dhunters.kpop.common.enums.Role;
-import com.dhunters.kpop.common.enums.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.text.DecimalFormat;
 import java.util.Date;
 
 @Entity
@@ -47,9 +47,6 @@ public class Member extends BaseEntity {
     private Grade grade;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
-
-    @Enumerated(EnumType.STRING)
     private Role role;
 
     @Column(name = "total_order_amount")
@@ -57,14 +54,6 @@ public class Member extends BaseEntity {
 
     @Column(name = "marketing_consent")
     private Boolean marketingConsent;
-
-    @PrePersist
-    public void prePersist() {
-        if (this.status == null) this.status = Status.ACTIVE;
-
-        if (this.role == null) this.role = Role.USER;
-
-    }
 
     
 }

@@ -1,4 +1,7 @@
 package com.dhunters.kpop.models.member.service;
 
-public class MemberServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class MemberServiceImpl implements MemberService{
 }

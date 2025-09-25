@@ -2,6 +2,7 @@ package com.dhunters.kpop.models.image.service;
 
 import com.dhunters.kpop.common.enums.image.EntityType;
 import com.dhunters.kpop.common.enums.image.RelationType;
+import com.dhunters.kpop.models.image.dto.ImageReplaceReq;
 import com.dhunters.kpop.models.image.dto.ImageResponse;
 import com.dhunters.kpop.models.image.dto.ImageUpdateReq;
 import com.dhunters.kpop.models.image.dto.ImageUploadReq;
@@ -56,6 +57,11 @@ public interface ImageService {
 //     * 이미지 삭제 (소프트 삭제 - 관계만 비활성화)
 //     * @param imageId 이미지 ID
 
+
+    ImageResponse replaceImage(Long imageId, MultipartFile file, ImageReplaceReq request) throws IOException;
+
+//     * 이미지 변경 (실제 이미지 파일 변경)
+
     void deleteImage(Long imageId);
 
 //     * 이미지 영구 삭제 (파일 시스템에서도 완전 삭제)
@@ -92,6 +98,8 @@ public interface ImageService {
 //     * @return 이미지 개수
 
     long countImagesByEntity(EntityType entityType, Long entityId);
+
+
 
 
 }
