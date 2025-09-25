@@ -70,8 +70,8 @@ public class Coupon extends BaseEntity{
     @Column(name = "is_active")
     private Boolean isActive;
 
-    /* 등록일시 */
-    @Column(name = "created_at")
-    private Date createdAt;
+//    /* 등록일시 */
+//    @Column(name = "created_at")
+//    private Date createdAt;
 
 }
