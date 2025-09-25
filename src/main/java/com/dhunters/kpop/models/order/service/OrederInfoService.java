@@ -19,6 +19,7 @@ public interface OrederInfoService {
      * @param request 주문 생성 요청 정보
      * @return 생성된 주문 정보
      */
+    // 1. 장바구니 주문 생성
     OrderDto createOrderFromCart(CreateOrderReqDto request);
 
     /**
