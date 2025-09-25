@@ -1,6 +1,5 @@
 package com.dhunters.kpop.common.entity.image;
 
-
 import com.dhunters.kpop.common.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
@@ -16,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = "imageRelations") // 순환참조 방지
+@ToString(exclude = "imageRelations")
 @EqualsAndHashCode(of = "imageId")
 public class Image extends BaseEntity {
 
@@ -29,7 +28,7 @@ public class Image extends BaseEntity {
     @Column(name = "member_id")
     private Long memberId;
 
-    @Column(name = "original_filename")
+    @Column(name = "original_filename", length = 255) // 수정: 20 -> 255
     private String originalFilename;
 
     @Column(name = "stored_filename")
@@ -53,8 +52,6 @@ public class Image extends BaseEntity {
     @Column(name = "alt_text")
     private String altText;
 
-    // base : C, U Date
-
     @OneToMany(mappedBy = "image", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<ImageRelation> imageRelations = new ArrayList<>();
@@ -63,7 +60,6 @@ public class Image extends BaseEntity {
     public Image(Long memberId, String originalFilename, String storedFilename,
                  String filePath, Long fileSize, String mimeType, Integer width,
                  Integer height, String altText) {
-
         this.memberId = memberId;
         this.originalFilename = originalFilename;
         this.storedFilename = storedFilename;
@@ -73,6 +69,5 @@ public class Image extends BaseEntity {
         this.width = width;
         this.height = height;
         this.altText = altText;
-
     }
 }

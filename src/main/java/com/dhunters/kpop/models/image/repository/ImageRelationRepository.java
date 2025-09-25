@@ -3,6 +3,7 @@ package com.dhunters.kpop.models.image.repository;
 import com.dhunters.kpop.common.entity.image.ImageRelation;
 import com.dhunters.kpop.common.enums.image.EntityType;
 import com.dhunters.kpop.common.enums.image.RelationType;
+import lombok.Getter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
