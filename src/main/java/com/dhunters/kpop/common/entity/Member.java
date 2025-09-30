@@ -55,5 +55,7 @@ public class Member extends BaseEntity {
     @Column(name = "marketing_consent")
     private Boolean marketingConsent;
 
-    
+    @Column(name = "token_version", nullable = false)
+    private Long tokenVersion = 0L;
+
 }
