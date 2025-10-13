@@ -9,6 +9,7 @@ import com.dhunters.kpop.models.coupon.dto.modifyCoupon.ModifyCouponReq;
 import com.dhunters.kpop.models.coupon.dto.modifyCoupon.ModifyCouponRes;
 import com.dhunters.kpop.models.coupon.dto.postCoupon.PostCouponReq;
 import com.dhunters.kpop.models.coupon.dto.postCoupon.PostCouponRes;
+import com.dhunters.kpop.models.coupon.service.CouponService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/coupon")
 @RequiredArgsConstructor
 public class CouponController {
+
+    private final CouponService couponService;
+
     // C: 쿠폰 생성
     @PostMapping("/coupons")
     public ResponseEntity<PostCouponRes> create(@RequestBody(required = false) PostCouponReq req) {

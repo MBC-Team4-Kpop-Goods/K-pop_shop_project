@@ -11,6 +11,7 @@ import com.dhunters.kpop.models.member.dto.modifyMember.ModifyMemberRes;
 import com.dhunters.kpop.models.member.dto.postMember.PostMemberReq;
 import com.dhunters.kpop.models.member.dto.postMember.PostMemberRes;
 import com.dhunters.kpop.models.member.repository.MemberRepository;
+import com.dhunters.kpop.models.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class MemberController {
 
+    private final MemberService memberService;
     private MemberRepository memberRepository;
 
     // C

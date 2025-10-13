@@ -1,8 +1,16 @@
 package com.dhunters.kpop.models.member.dto.postMember;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@ToString
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostMemberRes {
-    private boolean isSuccess = true;
+
+    private String fullName;
+
+    private String memberName;
+
 }
